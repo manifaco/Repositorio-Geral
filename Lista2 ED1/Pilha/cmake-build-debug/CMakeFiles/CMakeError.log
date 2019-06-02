@@ -1,0 +1,18 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: G:/Users/Uálaci/Desktop/PilhaEncadeada/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command:"C:/PROGRA~2/Dev-Cpp/MinGW64/bin/mingw32-make.exe" "cmTC_b92e2/fast"
+C:/PROGRA~2/Dev-Cpp/MinGW64/bin/mingw32-make.exe -f CMakeFiles\cmTC_b92e2.dir\build.make CMakeFiles/cmTC_b92e2.dir/build
+mingw32-make.exe[1]: Entering directory 'G:/Users/Ußlaci/Desktop/PilhaEncadeada/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_b92e2.dir/testCCompiler.c.obj
+C:\PROGRA~2\Dev-Cpp\MinGW64\bin\gcc.exe    -o CMakeFiles\cmTC_b92e2.dir\testCCompiler.c.obj   -c G:\Users\U├ílaci\Desktop\PilhaEncadeada\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+gcc.exe: error: G:\Users\U├ílaci\Desktop\PilhaEncadeada\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c: No such file or directory
+gcc.exe: fatal error: no input files
+compilation terminated.
+CMakeFiles\cmTC_b92e2.dir\build.make:64: recipe for target 'CMakeFiles/cmTC_b92e2.dir/testCCompiler.c.obj' failed
+mingw32-make.exe[1]: *** [CMakeFiles/cmTC_b92e2.dir/testCCompiler.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'G:/Users/Ußlaci/Desktop/PilhaEncadeada/cmake-build-debug/CMakeFiles/CMakeTmp'
+Makefile:120: recipe for target 'cmTC_b92e2/fast' failed
+mingw32-make.exe: *** [cmTC_b92e2/fast] Error 2
+
+
