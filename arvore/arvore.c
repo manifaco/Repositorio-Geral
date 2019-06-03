@@ -11,75 +11,75 @@ int menu(){
 }
 
 // CRIANDO A ÁRVORE
-tipo_arvore *criarArvore(){
+tree *createTree(){
     return NULL;
 }
 
 // ALOCANDO NÓ
-tipo_arvore *alocarNo(int x){
-    tipo_arvore *no = (tipo_arvore *)malloc(sizeof(tipo_arvore));
+tree *alocateNode(int x){
+    tree *node = (tree *)malloc(sizeof(tree));
 
-    if(no){
-        no->info = x;
-        no->esq = NULL;
-        no->dir = NULL;
+    if(node){
+        node->info = x;
+        node->left = NULL;
+        node->right = NULL;
     }else{
         printf("Erro de alocacao...\n");
         exit(1);
     }
 
-    return no;
+    return node;
 }
 
 // INSERINDO NÓ NA ÁRVORE
-tipo_arvore *inserir(tipo_arvore *A, tipo_arvore *no){
+tree *insert(tree *A, tree *node){
     if(!A)
-        return no;
-    if(A->info > no->info)
-        A->esq = inserir(A->esq, no);
+        return node;
+    if(A->info > node->info)
+        A->left = insert(A->left, node);
     else
-        A->dir = inserir(A->dir, no);
+        A->right = insert(A->right, node);
 
     return A;
 }
 
 // IMPRIMINDO ÁRVORE PRÉ-ORDEM
-void imprimirPreOrdem(tipo_arvore *A){
+void printpreOrder(tree *A){
     if(A != NULL){
         printf("%d ", A->info);
-        imprimirPreOrdem(A->esq);
-        imprimirPreOrdem(A->dir);
+        printpreOrder(A->left);
+        printpreOrder(A->right);
     }
 }
 
 // IMPRIMINDO ÁRVORE IN-ORDEM
-void imprimirInordem(tipo_arvore *A){
+void printInOrder(tree *A){
     if(A != NULL){
-        imprimirInordem(A->esq);
+        printInOrder(A->left);
         printf("%d ", A->info);
-        imprimirInordem(A->dir);
+        printInOrder(A->right);
     }
 }
 
 // IMPRIMINDO ÁRVORE PÓS-ORDEM
-void imprimirPosOrdem(tipo_arvore *A){
+void printpostOrder(tree *A){
     if(A != NULL){
-        imprimirPosOrdem(A->esq);
-        imprimirPosOrdem(A->dir);
+        printpostOrder(A->left);
+        printpostOrder(A->right);
         printf("%d ", A->info);
     }
 }
 
 // BUCSANDO ELEMENTO NA ÁRVORE
-int buscar(tipo_arvore *A, int valor){
+int search(tree *A, int value){
     if(A){
-        if(A->info == valor){
+        if(A->info == value){
             return 1;
         }else{
-            if(valor < A->info)
-                buscar(A->esq, valor);
+            if(value < A->info)
+                search(A->left, value);
             else
-                buscar(A->dir, valor);
+                search(A->right, value);
         }
     }else{
         return 0;
@@ -87,24 +87,24 @@ int buscar(tipo_arvore *A, int valor){
 }
 
 // CONTANDO QUANTIDADE DE NÓS DA ÁRVORE
-int countNo(tipo_arvore *A){
+int countNode(tree *A){
     if(!A)
         return 0;
     else{
-       int conte = countNo(A->esq);
-       int contd = countNo(A->dir);
+       int conte = countNode(A->left);
+       int contd = countNode(A->right);
        return conte + contd + 1 ;
     }
 }
 
 // CONTANDO A ALTURA DE UMA ÁRVORE
 
-int countAltura(tipo_arvore *A){
+int countHeight(tree *A){
     if(!A)
         return 0;
     else{
-        int alte = countAltura(A->esq);
-        int altd = countAltura(A->dir);
+        int alte = countHeight(A->left);
+        int altd = countHeight(A->right);
         if(alte > altd)
             return alte + 1;
         else

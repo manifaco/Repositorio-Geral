@@ -2,44 +2,44 @@
 
 int main()
 {
-    tipo_arvore *A;
-    tipo_arvore *no = NULL;
+    tree *A;
+    tree *node = NULL;
     int op = 0;
-    int valor;
+    int value;
     int busca = NULL;
     int qtdNo = 0;
     int altura = 0;
 
     // CRIANDO ÁRVORE
-    A = criarArvore();
+    A = createTree();
 
     do{
         op = menu();
         if(op == 1){
-            printf("Informe o valor: ");
-            scanf("%d", &valor);
-            no = alocarNo(valor);
-            A = inserir(A, no);
+            printf("Informe o value: ");
+            scanf("%d", &value);
+            node = alocateNode(value);
+            A = insert(A, node);
         }else if(op == 2){
-                printf("Informe o valor a ser buscado: ");
-                scanf("%d", &valor);
-                busca = buscar(A, valor);
+                printf("Informe o value a ser buscado: ");
+                scanf("%d", &value);
+                busca = search(A, value);
                 if(busca == 1)
-                    printf("Valor encontrado!\n");
+                    printf("valor encontrado!\n");
                 else
-                    printf("Valor nao encontrado!\n");
+                    printf("valor nao encontrado!\n");
         }else if(op == 4){
-            imprimirPreOrdem(A);
+            printpreOrder(A);
         }else if(op == 5){
-            imprimirInordem(A);
+            printInOrder(A);
         }else if(op == 6){
-            imprimirPosOrdem(A);
+            printpostOrder(A);
         }else if(op == 7){
-            qtdNo = countNo(A);
+            qtdNo = countNode(A);
             printf("Qtd nos: %d\n", qtdNo);
             qtdNo = 0;
         }else if(op == 8){
-            altura = countAltura(A);
+            altura = countHeight(A);
             printf("Altura : %d\n", altura);
         }
     }while(op != 0);
