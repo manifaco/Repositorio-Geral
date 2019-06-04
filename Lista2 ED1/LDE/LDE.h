@@ -34,6 +34,8 @@ void printListI(dList* list);
 
 node* ordSearch(dList* list, data info);
 
+node* search(dList* list, data info)
+
 int getSizeList(dList* list);
 
 #endif

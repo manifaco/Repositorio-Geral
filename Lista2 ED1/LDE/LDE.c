@@ -195,6 +195,8 @@ node* ordSearch(dList* list, data info){
 		return aux;
 }
 
+
+
 void printList(dList* list){
 	node* aux = list->head->next;
 	while(aux){
