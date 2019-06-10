@@ -195,7 +195,121 @@ node* ordSearch(dList* list, data info){
 		return aux;
 }
 
+node* search(dList* list, data info){
+	node* aux = list->head;
+	int position=0;
+	while (aux->next){
+		aux = aux->next;
+		position++;
+		if (aux->info->value == info.value){
+			puts("valor encontrado!");
+			printf("posicao: %i\n", position);
+			return aux;
+		}
+	}
+	puts("valor nao encontrado\n");
+	return NULL;
+}
 
+/*void quickSort(dList* list, int left, int right) {
+    int i, j,count1,count2, middle;puts("215");
+    node* pivot = list->head;puts("216");
+    node* auxLeft = list->head->next;puts("217");
+    node* auxRight = list->head->next;puts("218");
+    node* aux;puts("219");
+    i = left;
+    j = right;
+    middle =(left + right) / 2;
+    while(middle>0){
+    	pivot = pivot->next;puts("224");
+    	middle--;
+	}
+
+    while(i <= j) {
+    	count1 = i;
+    	while(count1>0){
+    		auxLeft = auxLeft->next;puts("231");
+    		count1--;
+		}
+		count2 = j;
+		while(count2>0){
+			auxRight = auxRight->next;puts("236");
+			count2--;
+		}
+    	
+        while(auxLeft->info->value < pivot->info->value && i < right) {
+            i++;puts("240");
+        }
+        while(auxRight->info->value > pivot->info->value && j > left) {
+            j--;puts("243");
+        }
+        
+        if(i <= j) {
+        	node* auxPrev, *auxNext;
+        	if(auxLeft->prev) auxPrev = auxLeft->prev;puts("247");
+        	if(auxLeft->next) auxNext = auxLeft->next;
+           	if (auxLeft->prev) auxLeft->prev->next = auxRight;
+           	if(auxLeft->next) auxLeft->next->prev = auxRight;
+           	auxLeft->prev = auxRight->prev;
+           	auxLeft->next = auxRight->next;
+           	if(auxRight->prev) auxRight->prev->next = auxLeft;
+           	if(auxRight->next) auxRight->next->prev = auxLeft;
+           	else list->last = auxLeft;
+           	auxRight->prev = auxPrev;
+           	auxRight->next = auxNext;
+            i++;
+            j--;
+        }
+    }
+     
+    if(j > left) {
+        quickSort(list, left, j);
+    }
+    if(i < right) {
+        quickSort(list, i, right);
+    }
+}
+
+void ord(dList *list){
+	int left=0, right=0;
+	node *aux = list->head;
+	while(aux->next){
+		aux = aux->next;
+		right++;
+	}
+	right--;
+	printf("right:%i\n", right);
+	quickSort(list, left,right);
+}*/
+
+void ord(dList *list){
+	node* aux = list->head;
+	node* auxNext;
+	int isOrd=1;
+	auxNext = aux->next;
+	while(aux->next){
+		if(aux->info->value < auxNext->info->value){
+			if(aux->prev) aux->prev->next = auxNext;
+			auxNext->prev = aux->prev;
+			aux->prev = auxNext;
+			aux->next = auxNext->next;
+			if(auxNext->next) auxNext->next->prev = aux;
+			else list->last = aux;
+			auxNext->next = aux;
+		}
+		else aux = aux->next;
+	}
+	
+	aux = list->head;
+	while(aux->next){
+		if(aux->info->value < auxNext->info->value){
+			isOrd = 0;
+			break;
+		}
+		aux = aux->next;
+	}
+	if(isOrd == 0) ord(list);
+}
 
 void printList(dList* list){
 	node* aux = list->head->next;

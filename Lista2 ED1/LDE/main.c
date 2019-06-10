@@ -13,6 +13,7 @@ int main(){
     puts("8-Imprimir lista inversamente\n");
     puts("9-Buscar Ordenada\n");
     puts("10-Buscar Desordenada\n");
+    puts("11-Ordenar\n");
     puts("0-Sair\n");
     
     do{
@@ -45,13 +46,19 @@ int main(){
             	puts("informe o valor que deseja buscar:\n");
             	scanf("%i", &_info.value);
             	currentNode = ordSearch(list,_info);
-            	
+            	break;
+            
             case 10:
             	puts("informe o valor que deseja buscar:\n");
             	scanf("%i", &_info.value);
             	currentNode = search(list,_info);
+            	break;
+            
+            case 11:
+            	ord(list);
+            	break;
         }
-        if (op>10 || op < 0) printf("Opcao Invalida");
+        if (op>11 || op < 0) printf("Opcao Invalida");
         puts("\n");
     }while(op!=0);
 }
