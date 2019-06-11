@@ -9,18 +9,17 @@ int main(){
 	node* matrixHead[qMatrizes];
 	node* matrix = createMatrix();
 	
+	puts("MENU -----------------------------------------------------------\n1-Ler matriz\n2-Imprimir matriz\n3-somar\n4-subtrair\n5-multiplicar\n6-dividir");
+	
 	do{
 		scanf("%i",&op);
 		fflush(stdin);
 			if(op==1){
 				puts("informe qual matriz deseja ler");
 				matrixName[i] = getString();
-				puts(matrixName[i]);
 				matrixHead[i] = createMatrix();
 				fillMatrix(matrixHead[i], lineSize, columnSize, matrixName[i]);
-				printMatrix(matrixHead[i], columnSize, lineSize, matrixName[i]);
-				//fillMatrix(matrix, lineSize, columnSize, matrixName[i]);
-				//printMatrix(matrix, columnSize, lineSize, matrixName[i]);
+				i++;
 				
 			}		
 					
@@ -33,8 +32,8 @@ int main(){
 			}
 
 			
-			if(op==3){
-				puts("informe o nome das matrizes nas quais deseja realizar a soma");
+			if(op==3 || op == 4 || op == 5 || op == 6){
+				puts("informe o nome das matrizes nas quais deseja realizar a operacao");
 				char* name = getString();
 				a = checkMatrix(i,matrixName,name);
 				if (a==-1){
@@ -47,7 +46,10 @@ int main(){
 				if (b==-1){
 					puts("ERRO: nao existe nenhuma matriz com esse nome criada");
 				}
-				else plusMatrix(matrixHead[a],matrixHead[b],matrixHead,matrixName[a],matrixName[b]);
+				if(op==3) plusMatrix(matrixHead[a],matrixHead[b],matrixHead,matrixName[a],matrixName[b]);
+				if(op==4) minusMatrix(matrixHead[a],matrixHead[b],matrixHead,matrixName[a],matrixName[b]);
+				if(op==5) multMatrix(matrixHead[a],matrixHead[b],matrixHead,matrixName[a],matrixName[b]);
+				if(op==6) divMatrix(matrixHead[a],matrixHead[b],matrixHead,matrixName[a],matrixName[b]);
 			}
 	}while(op!=0);
 	

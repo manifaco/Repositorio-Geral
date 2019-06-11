@@ -35,4 +35,16 @@ void fillMatrix (node* matrixHead, int lineSize, int columnSize, char* matrixNam
 
 void printMatrixColumn(node* matrixHead);
 
+/*plusMatrix(node* matrix1, node* matrix2, node** matrixVector, char* matrix1Name, char* matrix2Name);
+
+minusMatrix(node* matrix1, node* matrix2, node** matrixVector, char* matrix1Name, char* matrix2Name);
+
+multMatrix(node* matrix1, node* matrix2, node** matrixVector, char* matrix1Name, char* matrix2Name);
+
+divMatrix(node* matrix1, node* matrix2, node** matrixVector, char* matrix1Name, char* matrix2Name);*/
+
+char* getString();
+
+int checkMatrix(int i,char** matrixName, char* name);
+
 #endif
