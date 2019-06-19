@@ -35,4 +35,6 @@ bst* getSmallerNode(bst* tree);
 
 int removeBSTNode(bst* tree, int value);
 
+bst* searchBSTFather(bst* tree, bst* searchNode);
+
 #endif

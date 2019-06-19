@@ -35,7 +35,7 @@ void printpreOrder(bst* tree){
         printpreOrder(leftBST(tree));
         printpreOrder(rightBST(tree));
     }
-    if(!tree) ("arvore vazia");
+    else ("arvore vazia");
 }
 
 bst* searchBSTNode(bst* tree, bst* searchNode){
@@ -43,6 +43,15 @@ bst* searchBSTNode(bst* tree, bst* searchNode){
 	if (!tree || tree->info->value == searchNode->info->value) return tree;
 	if(searchNode->info->value < tree->info->value) tree = searchBSTNode(leftBST(tree),searchNode);
 	else tree = searchBSTNode(rightBST(tree), searchNode);
+	return tree;
+}
+
+bst* searchBSTFather(bst* tree, bst* searchNode){
+	if (!tree || tree->info->value == searchNode->info->value) return NULL;
+	if(tree->right) if(tree->right->info->value == searchNode->info->value) return tree;
+	if(tree->left) if(tree->left->info->value == searchNode->info->value) return tree;
+	if(searchNode->info->value < tree->info->value) tree = searchBSTFather(leftBST(tree),searchNode);
+	else tree = searchBSTFather(rightBST(tree), searchNode);
 }
 
 bst* subInsertBSTNode(bst* tree, bst* newNode){
@@ -80,22 +89,38 @@ int removeBSTNode(bst* tree, int value){
 		info* newInfo = createInfo(value);
 		bst* newNode = createBSTNode(newInfo);
 		bst* auxTree = tree;
-		auxTree = searchBSTNode(tree,newNode);
-		printpreOrder(tree);
-		printf("auxTree value:\n", auxTree->info->value);
-		puts("83");
+		auxTree = searchBSTNode(auxTree,newNode);
+		if (auxTree) printf("auxTree value:%i\n", auxTree->info->value);
+		bst* auxTreeFather = searchBSTFather(tree,auxTree);
+		if (auxTreeFather) printf("auxTreeFather value:%i\n", auxTreeFather->info->value);
+		printpreOrder(auxTree);
+		puts("86");
 		
-		if (!auxTree->left && !auxTree->right){
-			puts("86"); free(auxTree);
+		if (auxTree->left==NULL && auxTree->right==NULL){
+			if(auxTree->info == tree->info){
+				tree->right = NULL;
+				tree->left = NULL;
+				free(auxTree);
+				return 1;
+			}
+			else{
+				printf("No sendo removido:%i\n", auxTree->info->value);
+				printf("Pai:%i\n", auxTreeFather->info->value);
+				if(auxTreeFather > auxTree) auxTreeFather->left = NULL;
+				else auxTreeFather->right = NULL;
+				free(auxTree);
+				return 1;
+			}
 		}
 	
-		if(auxTree->left || auxTree->right){
-			if(auxTree->left && !auxTree->right){
+		if(auxTree->left!=NULL || auxTree->right!=NULL){
+			if(auxTree->left!=NULL && auxTree->right==NULL){
 				bst* aux = auxTree->left;
 				auxTree->info = auxTree->left->info;
 				auxTree->left = auxTree->left->left;
 				auxTree->right = auxTree->left->right;
 				free (aux);
+				return 1;
 			}
 			
 			if(auxTree->right && !auxTree->left){
@@ -104,11 +129,15 @@ int removeBSTNode(bst* tree, int value){
 				auxTree->left = auxTree->right->left;
 				auxTree->right = auxTree->right->right;
 				free(aux);
+				return 1;
 			}
 			
 			if(auxTree->left && auxTree->right){
 			bst* smaller;
-			smaller = getSmallerNode(auxTree);
+			bst* aux;
+			smaller = getSmallerNode(leftBST(auxTree));
+			aux = searchBSTFather(auxTree,smaller);
+			aux->left = NULL;
 			auxTree->info = smaller->info;
 			free(smaller);
 			}
