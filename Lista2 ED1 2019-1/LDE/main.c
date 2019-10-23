@@ -58,8 +58,7 @@ int main(){
             	ord(list);
             	break;
         }
-        if (op>11 || op < 0) printf("Opcao Invalida");
-        puts("\n");
-    }while(op!=0);
+        if (op>11 || op < 0) printf("Opcao Invalida\n");
+    }while(op);
 }
 

@@ -125,17 +125,12 @@ void removeNode(dList* list, int option){
 	}
 	
 	else if (option == 5){
-		puts("foi\n");
 		if (list->last){
-			puts("foi\n");
 			node* aux = list->last;
 			printf("list->last %i\n", aux->info->value);
-			puts("foi\n");
 			list->last = list->last->prev;
 			printf("list->last %i\n", list->last->info->value);
-			puts("foi\n");
 			list->last->next = NULL;
-			puts("foi\n");
 			printf("No removido:%i", aux->info->value);
 			free (aux);
 			
@@ -190,7 +185,6 @@ node* ordSearch(dList* list, data info){
 		for(i=0;i<(right->info->value);i++){
 			aux = aux->next;
 		}
-		printf("AUX:%i\n", aux->info->value);
 		printf("o elemento buscado se encontra na posicao %i\n", right->info->value);
 		return aux;
 }
