@@ -205,78 +205,111 @@ int isVogal(char character){
 void encode(dList* list){
 	node* aux = list->head->next;puts("206");
 	node* aux2, *aux3, *aux4;puts("207");
-	int i=0, vogalTrue;puts("208");
+	dList* auxList = createList();
+	int i=0, paridade=0; puts("208");
 	while(aux){
-		if (aux && isVogal(aux->info->character)) aux = aux->next;
-		else aux2 = aux;
+		if (aux && isVogal(aux->info->character)) {aux = aux->next; puts("entrou no if");}
+		else {
+			aux2 = aux;
+			puts("entrou no else");
 		puts("212"); 
 		if(aux){
 			while(!isVogal(aux->info->character) && aux->next){
 				aux = aux->next;puts("214");
-				if(aux) if(isVogal(aux->info->character)){
-				aux = aux->prev;
-				i++;
-				break;
-				}
 				i++;puts("215");
 			}
+			if(aux) if(isVogal(aux->info->character)){
+				aux = aux->prev;
+			}
 		}
+			/*if(i%2 == 0) paridade = 1;
 			printf("aux dps do while: %c", aux->info->character);
 			puts("217");
 			printf("i: %i\n", i);
-			if(i == 1) i = 0;
+			//if(i == 1) i = 0;
 			if(i) i = i/2;puts("218");
 			printf("i: %i\n", i);
-			if(i) while(i){
-			if(aux2->next) aux2->next->prev = aux;puts("220");
-			if(aux2->prev) aux2->prev->next = aux;puts("221");
-			if(aux->next) aux->next->prev = aux2;puts("222");
-			aux->prev->next = aux2;puts("223");
-			aux3 = aux2->next;puts("224");
-			aux2->next = aux->next;puts("225");
-			aux->next = aux3;puts("226");
-			aux3 = aux2->prev;puts("227");
-			aux2->prev = aux->prev;puts("228");
-			aux->prev = aux3;puts("229");
-			aux3 = aux2;puts("230");
-			aux2 = aux;puts("231");
-			aux = aux3;puts("232");
-			i--;	puts("233");
+			if (aux2) printf("aux2:%c\n", aux2->info->character);
+			if(i) {
+				while(i){
+					if(i == 1 && paridade !=0) if(aux2->next) aux2->next->prev = aux;puts("220");
+					if(aux2->prev) aux2->prev->next = aux;puts("221");
+					if(aux->next) aux->next->prev = aux2;puts("222");
+					if(i == 1 && paridade !=0) aux->prev->next = aux2;puts("223");
+					aux3 = aux2->next;puts("224");
+					aux2->next = aux->next;puts("225");
+					aux->next = aux3;puts("226");
+					aux3 = aux2->prev;puts("227");
+					aux2->prev = aux->prev;puts("228");
+					aux->prev = aux3;puts("229");
+					aux3 = aux2;puts("230");
+					aux2 = aux;puts("231");
+					aux = aux3;puts("232");
+					i--;	puts("233");
+					
+					}puts("238");
+				}*/
+			aux3 = aux2->prev;
+			aux4 = aux->next;
+			aux2->prev = NULL;
+			aux->next = NULL;
+			auxList->head->next = aux2;
+			auxList->last = aux;
+			invert(auxList);
+			aux2->prev = aux3;
+			aux->next =aux4;
+			if(aux3) {if(aux3->info) printf("aux3: %c\n", aux3->info->character); aux2->prev->next = aux;}
+			if(aux4) {if(aux4->info) printf("aux4: %c\n", aux4->info->character); aux->next->prev = aux2;}
+			if(aux3) {if(aux2->info) printf("aux2: %c\n", aux2->info->character); }
+			if(aux4) {if(aux->info) printf("aux: %c\n", aux->info->character); }
+			aux = aux->next;
+			puts("printando a lista ENCODE");
 			printList(list);
-			}
+		}
 	}puts("243");
 	invert(list);
 }
 
-void invert(dList *list){
+/*void invert(dList *list){
 	
 	node* current = list->head->next, *next, *aux;
 	int i = 1;
 	while(current){
-		if(current) printf("current: %c\n", current->info->character);
-		if(current->next) {printf("current->next: %c\n", current->next->info->character);}
-		if(current->prev!=NULL && !i) {puts("247");printf("current->prev: %c\n", current->prev->info->character);}
-		//if(aux){printf("aux: %c\n", aux->info->character);} 
-		aux = current->next;puts("249");
-		if(!i){current->next = current->prev;puts("250");}
+		aux = current->next;
+		if(!i)current->next = current->prev;
 		else {
 			current->next = NULL;
 			i = 0;
 		}
-		current->prev = aux;puts("251");
-		puts("depois do loop");
-		if(current->next) {printf("current->next: %c\n", current->next->info->character);}
-		if(current->prev!=NULL && !i) {puts("247");printf("current->prev: %c\n", current->prev->info->character);}
-		current = current->prev;//puts("252");
-		if(current) printf("current: %c\n", current->info->character);
-		puts("--------------------------------------------------");
+		current->prev = aux;
+		current = current->prev;
 		
 	}
-	printf("Head->next: %c\n", list->head->next->info->character);
 	aux = list->last;
 	list->last = list->head->next;
 	list->head->next = aux;
+	puts("PRINTANDO A LISTA:");
+	printList(list);
+	puts("=================");
+}*/
+
+void invert(dList *list){
+	node* current=list->head->next, *next = NULL, *prev = NULL;
+	current->prev = NULL;
+	int i=1;
+	while(current){
+		next = current->next;
+		current->prev = next;
+		current->next = prev;
+		prev = current;
+		current = next;
+	}
+	current = list->last;
+	list->last = list->head->next;
+	list->head->next = current;
 }
+
+
 
 void printList(dList* list){
 	fflush(stdin);

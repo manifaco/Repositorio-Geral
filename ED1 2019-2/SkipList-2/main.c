@@ -6,7 +6,7 @@ int main() {
 	printf("head:%i\n",head->value);
 	puts("1-inserir\n2-remover\n3-imprimir\n");
 	
-	do{	puts("begin");
+	do{	
 		scanf("%i",&op);
 		if(op == 1){
 			puts("valor,level");
