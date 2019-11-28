@@ -1,0 +1,10 @@
+Erro 01: Divisao por 0 Horario da ocorrencia: 26/11/2019 as 15:48:01
+Erro 05: raiz de numero negativo26/11/2019 as 15:48:07 Horario da ocorrencia: 26/11/2019 as 15:48:07
+Erro 05: raiz de numero negativo26/11/2019 as 15:48:58 Horario da ocorrencia: 26/11/2019 as 15:48:58
+Erro 01: Divisao por 0 Horario da ocorrencia: 26/11/2019 as 15:51:01
+Erro 05: raiz de numero negativo26/11/2019 as 15:51:05 Horario da ocorrencia: 26/11/2019 as 15:51:05
+Erro 01: Divisao por 0 Horario da ocorrencia: 26/11/2019 as 16:08:41
+Erro 03: caracteres numericos encontrados Horario da ocorrencia: 26/11/2019 as 16:08:49
+Erro 02: caracteres nao numericos encontrados Horario da ocorrencia: 26/11/2019 as 16:08:51
+Erro 05: raiz de numero negativo26/11/2019 as 16:08:53 Horario da ocorrencia: 26/11/2019 as 16:08:53
+Erro 05: raiz de numero negativo26/11/2019 as 16:10:29 Horario da ocorrencia: 26/11/2019 as 16:10:29
