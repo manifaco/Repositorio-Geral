@@ -1,0 +1,12 @@
+﻿  BST.c
+  hashtable.c
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\BST.c(71,6): error C2040: 'listPosOrder': 'key *(key *,node **,node **)' difere em níveis de indireção de 'void (key *,node **,node **)'
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\hashtable.c(15,41): warning C4047: 'função': 'key **' difere em níveis de indireção de 'key *'
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\hashtable.c(15,41): warning C4024: 'insertBST': tipos diferentes para parâmetro formal e real 1
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\hashtable.c(23,48): warning C4047: 'função': 'key **' difere em níveis de indireção de 'key *'
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\hashtable.c(23,48): warning C4024: 'removeBST': tipos diferentes para parâmetro formal e real 1
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\hashtable.c(56,20): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados
+  ListaCircular.c
+  mainHash.c
+  Gerando Código...
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\HashTable\hashtable.c(59,20): warning C4244: '=': conversão de 'double' para 'int', possível perda de dados

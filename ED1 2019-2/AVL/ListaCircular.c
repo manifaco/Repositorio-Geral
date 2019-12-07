@@ -1,4 +1,4 @@
-#include "ListaCircular.h"
+#include "BST.h"
 
 info* createInfo(int value){
 	info* newInfo =(info*) calloc(1,sizeof(info));
@@ -35,7 +35,7 @@ node* insertE(int value, node* first, node** last){
 	}
 	node* newNode = createNode(value);
 	if((*last)) (*last)->next = newNode;
-	(*last) = newNode;printf("first: %i\n", first->info->value);
+	(*last) = newNode;
 	return first;
 }
 

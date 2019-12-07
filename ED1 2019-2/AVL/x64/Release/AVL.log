@@ -1,0 +1,9 @@
+﻿  BST.c
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\AVL\BST.c(117,8): warning C4101: 'bst2': variável local não referenciada
+C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\AVL\BST.c(241,6): warning C4101: 'j': variável local não referenciada
+  Gerando código
+  2 of 24 functions ( 8.3%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finalizada a geração de código
+  AVL.vcxproj -> C:\Users\ualac\source\repos\ualaci\Repositorio-Geral\ED1 2019-2\AVL\x64\Release\AVL.exe
